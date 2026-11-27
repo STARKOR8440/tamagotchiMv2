@@ -676,20 +676,25 @@ export default function App() {
   };
 
   const handleSelectDexBiomeTab = useCallback((biomeKey) => {
-    if (!['land', 'forest', 'water', 'sky'].includes(biomeKey)) return;
-    setPet((p) => {
-      const prevList = normalizeDexVisitedBiomes(p.dexVisitedBiomes);
-      if (prevList.includes(biomeKey)) return p;
-      const nextList = [...prevList, biomeKey];
-      if (nextList.length === 4 && (SPECIES[p.speciesId] || SPECIES.EGG).stage === 'EGG') {
+  if (!['land', 'forest', 'water', 'sky'].includes(biomeKey)) return;
+
+  setPet((prev) => {
+    const prevList = normalizeDexVisitedBiomes(prev.dexVisitedBiomes);
+    if (prevList.includes(biomeKey)) return prev;
+
+    const nextList = [...prevList, biomeKey];
+    if (nextList.length === 4 && (SPECIES[prev.speciesId] || SPECIES.EGG).stage === 'EGG') {
+      setTimeout(() => {
         triggerReaction('4개 필드 도감 탭 확인 완료! 비비마루치 조건 충족 ✨');
-      }
-      return {
-        ...p,
-        dexVisitedBiomes: nextList,
-      };
-    });
-  }, []);
+      }, 0);
+    }
+
+    return {
+      ...prev,
+      dexVisitedBiomes: nextList,
+    };
+  });
+}, []);
 
   const startNextGeneration = (isHardReset = false) => {
     sfx.confirm();
