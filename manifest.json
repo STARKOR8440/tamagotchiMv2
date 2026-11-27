@@ -1,0 +1,24 @@
+{
+  "name": "바탕화면 다마고치 (Desktop & Mobile Tamagotchi)",
+  "short_name": "다마고치",
+  "description": "35종 진화 도감과 8종 커스텀 스킨을 수집하는 레트로 다마고치",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#e0f2fe",
+  "theme_color": "#38bdf8",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
